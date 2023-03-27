@@ -35,6 +35,17 @@ spring:
                 baseMessage: Spring Cloud Gateway LoggingFilter
                 preLogger: true
                 postLogger: true
+        - id: catalogs-service
+          uri: lb://CATALOGS-SERVICE
+          predicates:
+            - Path=/catalogs-service/**
+          filters:
+            - name: CustomFilter
+            - name: LoggingFilter
+              args:
+                baseMessage: Spring Cloud Gateway LoggingFilter
+                preLogger: true
+                postLogger: true
 
 
 eureka:
