@@ -24,22 +24,17 @@ public class OrderController {
         return Mono.just(String.format("This is OrderService on PORT %s", environment.getProperty("local.server.port")));
     }
 
-    @PostMapping("/{userId}/orders")
+    @PostMapping("/orders/{userId}")
     @ResponseStatus(HttpStatus.CREATED)
     public CommonResponse createOrder(@PathVariable("userId") String userId, @RequestBody RequestOrder requestOrder) {
         requestOrder.setUserId(userId);
         return orderService.createOrder(requestOrder);
     }
 
-    @GetMapping("/{userId}/orders/")
+    @GetMapping(value = "/orders/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public CommonResponse getOrders(@PathVariable("userId") String userId) {
         return orderService.getOrderByUserId(userId);
     }
 
-    @GetMapping("/{orderId}/orders/")
-    @ResponseStatus(HttpStatus.OK)
-    public CommonResponse getOrder(@PathVariable("orderId") String orderId) {
-        return orderService.getOrderByOrderId(orderId);
-    }
 }
