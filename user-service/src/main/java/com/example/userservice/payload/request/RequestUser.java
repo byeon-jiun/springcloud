@@ -1,12 +1,17 @@
-package com.example.userservice.payload;
+package com.example.userservice.payload.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.UUID;
 
+@Builder
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class RequestUser {
     @NotNull(message = "Email cannot be null")
     @Size(min = 2, message = "Email not be less then two characters")
@@ -20,7 +25,7 @@ public class RequestUser {
     @Size(min = 8, message = "Password must be equal or grater than 8 characters")
     private String pwd;
 
-    private String userId;
-    private LocalDate createAt;
-    private String encryptedPwd;
+    @JsonIgnore
+    @Builder.Default
+    private String userId = UUID.randomUUID().toString();
 }
