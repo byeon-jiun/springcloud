@@ -41,7 +41,7 @@ public class UserController {
 
     @GetMapping("/users/{userId}")
     @ResponseStatus(HttpStatus.OK)
-    public CommonResponse getUser(@PathVariable String userId) {
+    public CommonResponse getUser(@PathVariable("userId") String userId) {
         return userService.getUserByUserId(userId);
     }
 }
