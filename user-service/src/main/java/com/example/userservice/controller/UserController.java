@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user-service")
+@RequestMapping("/")
 public class UserController {
 
     private final Environment environment;
