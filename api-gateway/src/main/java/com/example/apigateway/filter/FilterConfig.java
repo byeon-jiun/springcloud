@@ -18,9 +18,9 @@ public class FilterConfig {
                              .filters(f -> f.addRequestHeader("order-request", "order-request-header")
                                             .addResponseHeader("order-response", "order-response-header"))
                              .uri("http://127.0.0.1:6001"))
-                .route(r -> r.path("/catalogs-service/**")
-                        .filters(f -> f.addRequestHeader("catalogs-request", "catalogs-request-header")
-                                .addResponseHeader("catalogs-response", "catalogs-response-header"))
+                .route(r -> r.path("/catalog-service/**")
+                        .filters(f -> f.addRequestHeader("catalog-request", "catalog-request-header")
+                                .addResponseHeader("catalog-response", "catalog-response-header"))
                         .uri("http://127.0.0.1:7001"))
                 .build();
     }
