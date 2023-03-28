@@ -9,4 +9,5 @@ spring:
     config:
       server:
         git:
-          uri: file:///Users/byeonjiun/Desktop/Work/git-local-repo
+          uri: https://github.com/byeon-jiun/spring-cloud-config.git
+#          uri: file:///Users/byeonjiun/Desktop/Work/git-local-repo
