@@ -19,7 +19,12 @@ public class UserController {
 
     @GetMapping("/check")
     public Mono<String> check() {
-        return Mono.just(String.format("This is UserService on PORT %s", environment.getProperty("local.server.port")));
+        return Mono.just(String.format("This is UserService"
+                + ", port(local.server.port)=" + environment.getProperty("local.server.port")
+                + ", port(server.port)=" + environment.getProperty("server.port")
+                + ", port(token secret=)=" + environment.getProperty("token.secret")
+                + ", port(token expiration time)=" + environment.getProperty("token.expiration_time"))
+        );
     }
 
     @GetMapping("/welcome")

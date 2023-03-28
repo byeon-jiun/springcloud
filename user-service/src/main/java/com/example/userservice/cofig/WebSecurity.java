@@ -47,6 +47,7 @@ public class WebSecurity {
         http.headers().frameOptions().disable();
         http.authorizeHttpRequests(authorize -> {
             try {
+                authorize.antMatchers("/actuator/**").permitAll();
                 authorize.requestMatchers(WHITE_LIST_MATCHERS).permitAll()
                         .requestMatchers(PathRequest.toH2Console()).permitAll()
                         .requestMatchers(new IpAddressMatcher("127.0.0.1")).permitAll()
