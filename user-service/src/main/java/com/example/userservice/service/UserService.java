@@ -1,5 +1,6 @@
 package com.example.userservice.service;
 
+import com.example.userservice.entity.User;
 import com.example.userservice.payload.request.RequestUser;
 import com.example.userservice.utill.CommonResponse;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,4 +14,5 @@ public interface UserService extends UserDetailsService {
 
     CommonResponse getUserByAll();
 
+    User getUserDetailsByEmail(String userName);
 }

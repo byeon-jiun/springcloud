@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -29,6 +30,7 @@ public class WebSecurity {
     private final UserService userService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ObjectPostProcessor<Object> objectPostProcessor;
+    private final Environment environment;
 
     private static final String[] WHITE_LIST = {
             "/users/**",
@@ -64,7 +66,7 @@ public class WebSecurity {
     }
 
     private AuthenticationFilter getAuthenticationFilter() throws Exception {
-        AuthenticationFilter authenticationFilter = new AuthenticationFilter();
+        AuthenticationFilter authenticationFilter = new AuthenticationFilter(userService, environment);
         AuthenticationManagerBuilder builder = new AuthenticationManagerBuilder(objectPostProcessor);
         authenticationFilter.setAuthenticationManager(authenticationManager(builder));
         return authenticationFilter;
